@@ -91,18 +91,14 @@ object sorting extends App {
 
     // helper function for heap sort
     def heapify(arr: Array[Int], n: Int, i: Int): Unit = {
-        var largest = i         // Initialize the largest as root
-        val left = 2 * i + 1     // Left child
-        val right = 2 * i + 2    // Right child
+        var largest = i
+        val left = 2*i+1
+        val right = 2*i+2
 
-        if (left < n && arr(left) > arr(largest)) {
-            largest = left
-        }
+        if (left < n && arr(left) > arr(largest)) largest = left
 
-        if (right < n && arr(right) > arr(largest)) {
-            largest = right
-        }
-        // If the largest is not the root, swap and continue heapifying
+        if (right < n && arr(right) > arr(largest)) largest = right
+
         if (largest != i) {
             val tmp = arr(i)
             arr(i) = arr(largest)

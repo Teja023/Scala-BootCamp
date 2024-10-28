@@ -9,7 +9,7 @@ object sorting extends App {
 
     def bubble_sort(arr: Array[Int]) : Unit = {
         val n  = arr.length
-        for (i <- 0 until n - 1) {
+        for (i <- 0 until n - 1) {  
             for (j <- 0 until n - 1 - i) {
                 if (arr(j) > arr(j + 1)) {
                     val tmp = arr(j)

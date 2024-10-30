@@ -38,6 +38,12 @@ object csv_task extends App{
         filteredList
     }
 
+    println(filterDepartment("HR"))
+    println()
+
+    println(filterSalary(60000))
+    println()
+
     //Formatted output
     val formatted_list = employees_list.map(employee => employee.name + " from " + employee.city + " works in " + employee.department + " with salary of " + employee.salary)
 

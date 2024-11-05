@@ -19,7 +19,6 @@ object tree extends App {
 
     // Intializing root Node ("Organization")
     val rootNode = Node("Organization")
-    val existingDepartments: Set[String] = Set() // Set to track existing departments
 
     // DFS to check for node in root
     def dfs(node: Node, target: String): Option[Node] = boundary {
@@ -52,7 +51,6 @@ object tree extends App {
                         } else {
                             val newDept = Node(current_dept, employees)
                             parentNode.childNodes += newDept
-                            existingDepartments += current_dept // Track the new department
                             println()
                             println(s"Created new child department '$current_dept' under '$parent_dept'.")
                         }

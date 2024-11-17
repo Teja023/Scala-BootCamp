@@ -22,7 +22,8 @@ resolvers += "Akka Snapshot Repository" at "https://repo.akka.io/snapshots/"
 libraryDependencies ++= Seq(
   "io.circe" %% "circe-core" % "0.14.1",
   "io.circe" %% "circe-generic" % "0.14.1",
-  "io.circe" %% "circe-parser" % "0.14.1"
+  "io.circe" %% "circe-parser" % "0.14.1",
+  "com.sun.mail" % "javax.mail" % "1.6.2",
 )
 
 

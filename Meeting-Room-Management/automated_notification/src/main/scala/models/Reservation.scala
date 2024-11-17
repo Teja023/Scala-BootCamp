@@ -1,12 +1,13 @@
 package models
 
 case class Reservation(
-                        reservationId: Int,
+                        reservationId: Long,
                         roomId: Int,
                         employeeName: String,
+                        employeeMail: String,
                         department: String,
                         purpose: String,
                         startTime: String,
                         endTime: String,
-                        createdBy: Int
+                        createdBy: Long
                       )

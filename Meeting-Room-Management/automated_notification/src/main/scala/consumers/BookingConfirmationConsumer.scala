@@ -4,6 +4,7 @@ import actors.{ReleaseActor, ReminderActor}
 import akka.actor.ActorSystem
 import io.circe.parser.decode
 import models.Reservation
+import io.circe.Json
 import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer}
 import org.apache.kafka.common.serialization.StringDeserializer
 import services.{EmailService, RoomService}
@@ -23,7 +24,7 @@ object BookingConfirmationConsumer {
     props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, classOf[StringDeserializer].getName)
 
     val consumer = new KafkaConsumer[String, String](props)
-    consumer.subscribe(Collections.singletonList("make_reservation"))
+    consumer.subscribe(Collections.singletonList("reservation-server"))
 
     val emailService = new EmailService()  // Instantiate the EmailService
     val roomService = new RoomService()    // Instantiate the RoomService
@@ -35,7 +36,10 @@ object BookingConfirmationConsumer {
     while (true) {
       val records = consumer.poll(java.time.Duration.ofMillis(100))
       records.forEach { record =>
-        println(s"Received message: ${record.value()}") // Log received messages
+        println("------------------------->")
+//        println(s"Received message: ${record.value()}") // Log received messages
+        val message = record.value()
+        println(s"Received message: $message")
         decode[Reservation](record.value()) match {
           case Right(reservation) =>
             println(s"Decoded reservation: $reservation") // Log successful decoding

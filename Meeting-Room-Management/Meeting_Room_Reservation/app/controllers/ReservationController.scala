@@ -17,6 +17,10 @@ class ReservationController @Inject()(
                                        userService: UserService
                                      )(implicit ec: ExecutionContext) extends AbstractController(cc) {
 
+  def showReservationForm: Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.ReservationForm())
+  }
+
   // Endpoint to reserve a room, restricted to AdminStaff role
   def reserveRoom: Action[JsValue] = Action.async(parse.json) { request =>
     request.body.validate[Reservation].fold(
@@ -31,7 +35,7 @@ class ReservationController @Inject()(
               case Some(savedReservation) =>
                 // Trigger Kafka event after successful reservation creation
                 val reservationData = Json.toJson(savedReservation).toString()
-                KafkaProducerUtil.sendMessage("make_reservation", savedReservation.reservationId.toString, reservationData)
+                KafkaProducerUtil.sendMessage("meeting-reservation", savedReservation.reservationId.toString, reservationData)
                 Created(Json.toJson(savedReservation))
               case None =>
                 Conflict(Json.obj("error" -> "Room is unavailable for the selected time"))

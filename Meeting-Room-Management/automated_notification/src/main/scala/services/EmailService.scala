@@ -25,23 +25,23 @@ class EmailService {
 
   def sendRoomPreparationNotification(reservation: Reservation): Unit = {
     println(s"Sending room preparation notification for reservation reservationId ${reservation.reservationId}")
-    val subject = s"Meeting Remainder"
+    val subject = s"Room preparation notification"
     val body =
       s"""
-         |Dear ${reservation.employeeName},
+         |Dear Room Service Team,
          |
-         |Welcome! Your Meeting is reserved from ${reservation.startTime} to ${reservation.endTime}.
+         |There is a Meeting reserved from ${reservation.startTime} to ${reservation.endTime} for ${reservation.roomId}.
          |
-         |Reminding Your Reservation.
+         |Please make sure the meeting requirements are met.
          |
-         |Thank you for reservation.
+         |For Further details contact ${reservation.employeeName} through ${reservation.employeeMail}
          |
          |Best regards,
-         |Meeting Room Service
+         |Room Service
          |""".stripMargin
 
     // Send Wi-Fi details email
-    EmailUtils.sendEmail("sonutez9790@gmail.com", subject, body)
+    EmailUtils.sendEmail("tejakumar023@gmail.com", subject, body)
   }
 
   def sendReminder(reservation: Reservation): Unit = {
@@ -67,22 +67,22 @@ class EmailService {
 
   def sendReleaseNotification(reservation: Reservation): Unit = {
     println(s"Room ${reservation.roomId} was not used for reservation reservationId ${reservation.reservationId}. Notification sent to admin staff.")
-    val subject = s"Meeting Remainder"
+    val subject = s"Meeting Release Notification"
     val body =
       s"""
-         |Dear ${reservation.employeeName},
+         |Dear Room Service Team,
          |
-         |Welcome! Your Meeting is reserved from ${reservation.startTime} to ${reservation.endTime}.
+         |The Meeting reserved from ${reservation.startTime} to ${reservation.endTime} has been released.
          |
-         |Reminding Your Reservation.
+         |Please Make sure the meeting room with Id ${reservation.roomId} be available for next meeting.
          |
-         |Thank you for reservation.
+         |Thank you.
          |
          |Best regards,
-         |Meeting Room Service
+         |Room Service
          |""".stripMargin
 
     // Send Wi-Fi details email
-    EmailUtils.sendEmail("sonutez9790@gmail.com", subject, body)
+    EmailUtils.sendEmail("tejakumar023@gmail.com", subject, body)
   }
 }

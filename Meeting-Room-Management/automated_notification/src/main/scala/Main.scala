@@ -12,9 +12,11 @@ object Main extends App {
   val roomPreparationActor = system.actorOf(RoomPreparationActor.props(emailService), "roomPreparationActor")
   val schedulerActor = system.actorOf(SchedulerActor.props(system), "schedulerActor")
 
-  // Start Kafka consumers
   BookingConfirmationConsumer.startConsumer()
+  println("BookingConfirmationConsumer started.")
+
   RoomPreparationConsumer.startConsumer()
+  println("RoomPreparationConsumer started.")
 
   // Keep the application running
   println("Notification System is running. Press ENTER to stop.")

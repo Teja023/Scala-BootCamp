@@ -18,9 +18,9 @@ object RoomPreparationConsumer {
     props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, classOf[StringDeserializer].getName)
 
     val consumer = new KafkaConsumer[String, String](props)
-    consumer.subscribe(Collections.singletonList("make_reservation"))
+    consumer.subscribe(Collections.singletonList("meeting-reservation"))
 
-    system.log.info("Room Preparation Consumer started")
+    println("Room Preparation Consumer started")
 
     while (true) {
       val records = consumer.poll(java.time.Duration.ofMillis(100))

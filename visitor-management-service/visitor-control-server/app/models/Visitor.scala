@@ -15,7 +15,7 @@ case class Visitor(
                     contactNumber: String,
                     checkInTime: String = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME),  // Default to current time
                     checkOutTime: Option[String] = None,
-                    status: String = "Checked In",  // Default to "Checked In"
+                    status: String = "Waiting",  // Default to "Checked In"
                   )
 
 // JSON reads and writes for Visitor

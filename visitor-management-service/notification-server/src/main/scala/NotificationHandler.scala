@@ -16,7 +16,7 @@ class NotificationHandler(itSupportProcessor: ActorRef, hostProcessor: ActorRef,
   consumerConfig.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
 
   val kafkaConsumer = new KafkaConsumer[String, String](consumerConfig)
-  kafkaConsumer.subscribe(java.util.Collections.singletonList("visitor-topic"))
+  kafkaConsumer.subscribe(java.util.Collections.singletonList("visitor-checkin-topic"))
 
   override def receive: Receive = {
     case "start-consumer" =>

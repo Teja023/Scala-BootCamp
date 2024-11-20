@@ -87,8 +87,6 @@ class HostProcessor extends Actor {
         case "Waiting" =>
           // Define visitor arrival notification for approval
           val subject = "Visitor Arrival Notification"
-          val approvalLink = s"http://localhost:9000/api/visitor-approval/approve/${visitor.visitorId.get}"
-          val rejectionLink = s"http://localhost:9000/api/visitor-approval/reject/${visitor.visitorId.get}"
           val body =
             s"""
                |Dear $hostName,
@@ -98,8 +96,7 @@ class HostProcessor extends Actor {
                |Contact Number: $contactNumber
                |Building: $building
                |
-               |To allow entry, click here: $approvalLink
-               |To deny entry, click here: $rejectionLink
+               |please confirm the visitors entry.
                |
                |Best regards,
                |Visitor Management System

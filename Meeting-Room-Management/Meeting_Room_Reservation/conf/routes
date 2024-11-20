@@ -19,6 +19,8 @@ POST  /api/room                     controllers.RoomController.addRoom()
 GET   /api/checkAvailability        controllers.RoomController.checkAvailability(startTime: String, endTime: String)
 GET   /api/checkRoomAvailability    controllers.RoomController.checkRoomAvailability(roomId: Int, startTime: String, endTime: String)
 
-POST  /api/reserve             controllers.ReservationController.reserveRoom
+POST  /api/reserve              controllers.ReservationController.reserveRoom
+GET   /api/reservation-form     controllers.ReservationController.showReservationForm
+
 
 

@@ -1,0 +1,9 @@
+
+µ
+salesData.protoproto_files"Œ
+SalesRecord
+Store (	RStore
+Dept (	RDept
+Date (	RDate!
+Weekly_Sales (RWeeklySales
+	IsHoliday (R	IsHolidaybproto3

@@ -1,0 +1,12 @@
+
+œ
+AggregateSensorData.protocaseStudy1.protobuf"á
+AggregatedSensorReading
+sensorId (RsensorId.
+averageTemperature (RaverageTemperature(
+averageHumidity (RaverageHumidity.
+minimumTemperature (RminimumTemperature.
+maximumTemperature (RmaximumTemperature(
+minimumHumidity (RminimumHumidity(
+maximumHumidity (RmaximumHumidity
+	dataCount (R	dataCountbproto3
